@@ -1,0 +1,60 @@
+/* tab */
+.tab-bar,
+.inner-tab-bar,
+.modal-tab-bar
+{
+    &::-webkit-scrollbar 
+    {
+        width: 0px;
+        height: 0px;
+    }
+
+    .tab-button,
+    .inner-tab-button
+    {
+        @apply
+        flex 
+        items-center 
+        h-full 
+        text-lg 
+        font-semibold 
+        text-gray-600 
+        border-2 
+        rounded-t-lg 
+        px-4 
+        py-4 
+        border-transparent 
+        
+        whitespace-nowrap 
+        transition-all
+        hover:text-skin-base ;
+
+        &.active-tab
+        {
+            @apply
+            border-skin-muted
+            border-b-transparent
+            bg-white;
+        }
+    }
+}
+
+.tab-content,
+.inner-tab-content,
+.modal-tab-content
+{
+    @apply
+    hidden
+    mb-40;
+
+    &.active-content
+    {
+        @apply
+        block;
+    }
+}
+
+// .inner-tab-content-wrap
+// {
+//     max-width: 520px;
+// }

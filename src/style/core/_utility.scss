@@ -1,0 +1,26 @@
+.title 
+{
+    @apply
+    font-SourceSansPro
+    font-bold
+    tracking-wider;
+}
+
+.desc
+{
+    @apply
+    font-OpenSans
+    font-normal;
+}
+
+.list-item 
+{
+    list-style: none;
+    
+    &::before
+    {
+        content: "✔";
+        color: var(--color-text-message);
+        margin-right: 12px;
+    }
+}

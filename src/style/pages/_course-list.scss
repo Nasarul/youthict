@@ -1,0 +1,63 @@
+#course-list
+{
+    .banner
+    {
+        background: url("../img/courselist-banner.png");
+        background-size: cover;
+    }
+
+    .webdev-carousel
+    {
+        @apply
+        relative;
+    }
+    .owl-prev
+    {
+        top: 40%;
+        line-height: 0%;
+        @apply
+        w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -left-12;
+
+        
+
+        span 
+        {
+            @apply
+            pb-1;
+        }
+    }
+
+    .owl-next
+    {
+        top: 40%;
+        line-height: 0%;
+        @apply
+        w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -right-12;
+
+        
+
+        span 
+        {
+            @apply
+            pb-1;
+        }
+    }
+}

@@ -1,0 +1,379 @@
+header .main-header > .grid {
+  grid-template-columns: auto 2fr auto;
+  grid-template-areas: "logo big-logo contact" "logo nav button";
+  align-items: center;
+}
+header .main-header .logo {
+  grid-area: logo;
+  margin-bottom: 20px;
+  align-self: flex-end;
+}
+header .main-header .big-logo img {
+  margin-inline: auto;
+}
+header .main-header nav {
+  justify-self: center;
+}
+header .main-header .log-button {
+  justify-self: end;
+}
+
+.sticky-header {
+  box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.1);
+  @apply fixed
+    w-full
+    top-0
+    bg-skin-light
+    -translate-y-full
+    z-50
+    transition-all;
+}
+.sticky-header > div {
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+.sticky-header nav {
+  justify-self: center;
+  margin-right: 120px;
+}
+.sticky-header.sticky {
+  @apply translate-y-0;
+}
+
+main {
+  min-height: calc(100vh - 800px);
+}
+
+footer {
+  @apply mt-28
+    border-t
+    border-skin-muted
+    bg-white;
+}
+footer .overlay {
+  background: url("../img/footer-back.png");
+}
+footer .upper-footer {
+  margin-top: -100px;
+  grid-template-columns: 1fr 1fr 1fr auto;
+}
+footer .mid-footer {
+  margin-top: 40px;
+}
+footer .mid-footer .grid {
+  grid-template-columns: 400px 1fr 1fr 1fr;
+}/*# sourceMappingURL=all.css.map */put,
+textarea {
+  resize: none;
+}
+
+label {
+  @apply block
+    text-base
+    text-skin-muted
+    font-bold
+    mb-2
+    transition-all;
+}
+label.floating-label {
+  @apply pointer-events-none
+        absolute
+        top-1/2
+        -translate-y-1/2
+        origin-top-left
+        left-4;
+}
+
+input[type=radio] {
+  height: 20px;
+  width: 20px;
+}
+
+select,
+textarea,
+input:not([type=radio], [type=checkbox]) {
+  @apply w-full
+    bg-white
+    border
+    outline-0 
+    border-gray-300
+    text-skin-base
+    rounded
+    px-4 
+    py-3 
+    h-12
+    transition-all;
+}
+select:hover, select:focus,
+textarea:hover,
+textarea:focus,
+input:not([type=radio], [type=checkbox]):hover,
+input:not([type=radio], [type=checkbox]):focus {
+  @apply border-skin-base;
+}
+select[type=file],
+textarea[type=file],
+input:not([type=radio], [type=checkbox])[type=file] {
+  padding: 0;
+}
+select[type=file]::file-selector-button,
+textarea[type=file]::file-selector-button,
+input:not([type=radio], [type=checkbox])[type=file]::file-selector-button {
+  border: none;
+  padding: 10px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #f2f2f2;
+  color: #565656;
+  letter-spacing: 0.2em;
+  margin-right: 20px;
+  transition: 0.2s ease-in-out;
+}
+select[type=file]:hover::file-selector-button,
+textarea[type=file]:hover::file-selector-button,
+input:not([type=radio], [type=checkbox])[type=file]:hover::file-selector-button {
+  @apply text-skin-base-inverted
+                bg-skin-primary-muted;
+}
+select[type=number]::-webkit-outer-spin-button, select[type=number]::-webkit-inner-spin-button,
+textarea[type=number]::-webkit-outer-spin-button,
+textarea[type=number]::-webkit-inner-spin-button,
+input:not([type=radio], [type=checkbox])[type=number]::-webkit-outer-spin-button,
+input:not([type=radio], [type=checkbox])[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+select[type=number],
+textarea[type=number],
+input:not([type=radio], [type=checkbox])[type=number] {
+  -moz-appearance: textfield;
+}
+
+textarea {
+  height: 100%;
+}
+
+.pass-field .toggole-icon {
+  pointer-events: fill;
+}
+.pass-field .toggole-icon.active-icon {
+  display: block;
+}
+.pass-field .toggole-icon.hidden-icon {
+  display: none;
+}
+.pass-field.active .toggole-icon.active-icon {
+  display: none;
+}
+.pass-field.active .toggole-icon.hidden-icon {
+  display: block;
+}
+
+.dropdown .dropdown-content {
+  @apply absolute 
+        top-4
+        -left-2 
+        
+        z-50
+        shadow-lg
+        shadow-skin-muted
+        border
+        text-skin-base
+        bg-skin-light
+        rounded-md
+        invisible
+        opacity-0
+        translate-y-8
+        transition-all;
+}
+.dropdown .dropdown-content .inner-dropdown {
+  @apply relative;
+}
+.dropdown .dropdown-content .inner-dropdown .inner-dropdown-content {
+  @apply absolute
+                left-full
+                top-0
+                z-50
+                shadow-lg
+                shadow-skin-muted
+                border
+                text-skin-base
+                bg-skin-light
+                rounded-md
+                invisible
+                opacity-0
+                -translate-x-10
+                transition-all;
+}
+.dropdown .dropdown-content .inner-dropdown:hover .inner-dropdown-content {
+  @apply visible
+                    opacity-100
+                    -translate-x-2;
+}
+.dropdown:hover .dropdown-content {
+  @apply visible
+            opacity-100;
+}
+
+/* tab */
+.tab-bar::-webkit-scrollbar,
+.inner-tab-bar::-webkit-scrollbar,
+.modal-tab-bar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.tab-bar .tab-button,
+.tab-bar .inner-tab-button,
+.inner-tab-bar .tab-button,
+.inner-tab-bar .inner-tab-button,
+.modal-tab-bar .tab-button,
+.modal-tab-bar .inner-tab-button {
+  @apply flex 
+        items-center 
+        h-full 
+        text-lg 
+        font-semibold 
+        text-gray-600 
+        border-2 
+        rounded-t-lg 
+        px-4 
+        py-4 
+        border-transparent 
+        
+        whitespace-nowrap 
+        transition-all
+        hover:text-skin-base;
+}
+.tab-bar .tab-button.active-tab,
+.tab-bar .inner-tab-button.active-tab,
+.inner-tab-bar .tab-button.active-tab,
+.inner-tab-bar .inner-tab-button.active-tab,
+.modal-tab-bar .tab-button.active-tab,
+.modal-tab-bar .inner-tab-button.active-tab {
+  @apply border-skin-muted
+            border-b-transparent
+            bg-white;
+}
+
+.tab-content,
+.inner-tab-content,
+.modal-tab-content {
+  @apply hidden
+    mb-40;
+}
+.tab-content.active-content,
+.inner-tab-content.active-content,
+.modal-tab-content.active-content {
+  @apply block;
+}
+
+.collapsible-wrap {
+  @apply border 
+    border-skin-muted
+    rounded-sm;
+}
+.collapsible-wrap .collapsible {
+  @apply p-4
+        flex
+        items-center
+        justify-between
+        gap-4
+        font-medium
+        text-skin-base
+        transition-all
+        border-b
+        border-b-skin-muted;
+}
+.collapsible-wrap .collapsible svg {
+  transition: 0.2s ease-in-out;
+}
+.collapsible-wrap .collapsible:hover {
+  @apply text-skin-hover;
+}
+.collapsible-wrap .collapsible.active {
+  @apply text-skin-hover;
+}
+.collapsible-wrap .collapsible.active svg {
+  rotate: 180deg;
+}
+.collapsible-wrap .collapsible-content {
+  max-height: 0px;
+  overflow-y: hidden;
+  transition: 0.2s ease-in-out;
+  @apply border-b
+        border-b-skin-muted
+        pl-4;
+}
+
+body.modal-open {
+  @apply h-screen
+        overflow-y-hidden;
+}
+
+.modal-wrap {
+  width: 100vw;
+  height: 100vh;
+  @apply fixed
+    top-0
+    right-0
+    z-50
+    hidden;
+}
+@media (max-width: 768px) {
+  .modal-wrap {
+    @apply w-screen;
+  }
+}
+.modal-wrap .modal-content {
+  overflow-y: scroll;
+  @apply absolute
+        top-1/2
+        right-0
+        -translate-y-1/2
+        scale-0
+        w-full
+        h-[85vh]
+        bg-skin-light
+        z-50
+        invisible
+        opacity-0
+        origin-center
+        transition-all;
+}
+@media (max-width: 768px) {
+  .modal-wrap .modal-content {
+    width: 100%;
+  }
+}
+.modal-wrap .modal-closer {
+  @apply w-12 
+        h-12 
+        grid 
+        place-items-center 
+        rounded-full
+        transition-all;
+}
+@media (max-width: 768px) {
+  .modal-wrap .modal-closer {
+    @apply absolute
+            top-10
+            right-8;
+  }
+}
+.modal-wrap .modal-scrim {
+  @apply absolute
+        inset-0
+        
+        opacity-60;
+}
+.modal-wrap.active-modal {
+  @apply block;
+}
+.modal-wrap.active-modal .modal-content {
+  @apply scale-100
+            visible
+            opacity-100;
+}
+.modal-wrap.delete-confirmation {
+  background-color: rgba(var(--color-boxshadow-muted), 0.05);
+}/*# sourceMappingURL=all.css.map */

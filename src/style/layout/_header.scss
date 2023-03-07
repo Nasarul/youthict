@@ -1,0 +1,73 @@
+header
+{
+    .main-header
+    {
+        > .grid
+        {
+            grid-template-columns: auto 2fr auto;
+            grid-template-areas: 
+            "logo big-logo contact"
+            "logo nav button";
+            align-items: center;
+        }
+        .logo
+        {
+            grid-area: logo;
+            margin-bottom: 20px;
+            align-self: flex-end;
+        }
+
+        .big-logo
+        {
+            img 
+            {
+                margin-inline: auto;
+            }
+        }
+
+        .contact-info
+        {
+        }
+
+        nav 
+        {
+            justify-self: center;
+        }
+
+        .log-button
+        {
+            justify-self: end;
+        }
+    }
+
+    
+}
+.sticky-header
+{
+    box-shadow: 0 4px 12px 0px rgba($color: #000000, $alpha: 0.10);
+    @apply
+    fixed
+    w-full
+    top-0
+    bg-skin-light
+    -translate-y-full
+    z-50
+    transition-all;
+
+    > div 
+    {
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+    }
+    nav 
+    {
+        justify-self: center;
+        margin-right: 120px;
+    }
+
+    &.sticky 
+    {
+        @apply
+        translate-y-0;
+    }
+}

@@ -1,0 +1,885 @@
+@charset "UTF-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --color-text-base: #222222;
+    --color-text-muted: #444444;
+    --color-text-base-inverted: #ffffff;
+    --color-text-muted-inverted: rgba(255, 255, 255, 0.9);
+    --color-text-message: #10b981;
+    --color-text-hover: #374151;
+    --color-fill-primary: #F16F21;
+    --color-fill-primary-muted: #F48848;
+    --color-fill-secondary: #11586D;
+    --color-fill-secondary-muted: #042935;
+    --color-fill-tertiary: #00ADEF;
+    --color-fill-light: #fff;
+    --color-button-primary: #DD7131;
+    --color-button-primary-muted: #F7C659;
+    --color-button-primary-hover: #F16F21;
+    --color-button-primary-muted-hover: #F48848;
+    --color-border-base: #F28F53;
+    --color-border-muted: #e5e7eb;
+    --color-boxshadow-base: 75, 85, 99;
+    --color-boxshadow-muted: 71, 85, 105;
+  }
+}
+html {
+  max-height: 100%;
+}
+
+/** scrollbar **/
+/* Works on Chrome, Edge, and Safari */
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/OpenSans/OpenSans-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/OpenSans/OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/OpenSans/OpenSans-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/OpenSans/OpenSans-Bold.ttf") format("truetype");
+}
+.title {
+  @apply font-SourceSansPro
+    font-bold
+    tracking-wider;
+}
+
+.desc {
+  @apply font-OpenSans
+    font-normal;
+}
+
+.list-item {
+  list-style: none;
+}
+.list-item::before {
+  content: "✔";
+  color: var(--color-text-message);
+  margin-right: 12px;
+}
+
+.btn,
+button {
+  cursor: pointer;
+}
+
+.fill-button {
+  @apply relative
+    h-[52px]
+    px-5
+    flex
+    items-center
+    justify-center
+    text-skin-base-inverted
+    text-xl
+    font-semibold
+    rounded-md
+    overflow-hidden;
+  background: linear-gradient(to right, #DD7131, #f4a448);
+  transition: all 0.2s ease-in-out;
+}
+.fill-button::before {
+  content: "";
+  @apply absolute
+        top-0
+        left-0
+        w-4
+        h-16
+        rounded-md
+        bg-white
+        bg-opacity-20
+        rotate-45
+        -translate-x-5
+        -translate-y-7
+        transition-all;
+}
+.fill-button:hover::before {
+  @apply top-full
+            left-full
+            -translate-x-5
+            -translate-y-8;
+}
+.fill-button:hover svg path {
+  @apply fill-skin-inverted;
+}
+
+.outline-button {
+  @apply relative
+    h-[52px]
+    px-5
+    font-semibold
+    text-xl
+    rounded-md
+    overflow-hidden
+    flex
+    items-center
+    justify-center
+    text-skin-duotone
+    border
+    border-skin-base
+    transition;
+}
+.outline-button:hover {
+  @apply bg-skin-primary-muted
+        text-skin-base-inverted;
+}
+.outline-button:hover svg path {
+  @apply fill-skin-inverted;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+input,
+textarea {
+  resize: none;
+}
+
+label {
+  @apply block
+    text-base
+    text-skin-muted
+    font-bold
+    mb-2
+    transition-all;
+}
+label.floating-label {
+  @apply pointer-events-none
+        absolute
+        top-1/2
+        -translate-y-1/2
+        origin-top-left
+        left-4;
+}
+
+input[type=radio] {
+  height: 20px;
+  width: 20px;
+}
+
+select,
+textarea,
+input:not([type=radio], [type=checkbox]) {
+  @apply w-full
+    bg-white
+    border
+    outline-0 
+    border-gray-300
+    text-skin-base
+    rounded
+    px-4 
+    py-3 
+    h-12
+    transition-all;
+}
+select:hover, select:focus,
+textarea:hover,
+textarea:focus,
+input:not([type=radio], [type=checkbox]):hover,
+input:not([type=radio], [type=checkbox]):focus {
+  @apply border-skin-base;
+}
+select[type=file],
+textarea[type=file],
+input:not([type=radio], [type=checkbox])[type=file] {
+  padding: 0;
+}
+select[type=file]::file-selector-button,
+textarea[type=file]::file-selector-button,
+input:not([type=radio], [type=checkbox])[type=file]::file-selector-button {
+  border: none;
+  padding: 10px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #f2f2f2;
+  color: #565656;
+  letter-spacing: 0.2em;
+  margin-right: 20px;
+  transition: 0.2s ease-in-out;
+}
+select[type=file]:hover::file-selector-button,
+textarea[type=file]:hover::file-selector-button,
+input:not([type=radio], [type=checkbox])[type=file]:hover::file-selector-button {
+  @apply text-skin-base-inverted
+                bg-skin-primary-muted;
+}
+select[type=number]::-webkit-outer-spin-button, select[type=number]::-webkit-inner-spin-button,
+textarea[type=number]::-webkit-outer-spin-button,
+textarea[type=number]::-webkit-inner-spin-button,
+input:not([type=radio], [type=checkbox])[type=number]::-webkit-outer-spin-button,
+input:not([type=radio], [type=checkbox])[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+select[type=number],
+textarea[type=number],
+input:not([type=radio], [type=checkbox])[type=number] {
+  -moz-appearance: textfield;
+}
+
+textarea {
+  height: 100%;
+}
+
+.pass-field .toggole-icon {
+  pointer-events: fill;
+}
+.pass-field .toggole-icon.active-icon {
+  display: block;
+}
+.pass-field .toggole-icon.hidden-icon {
+  display: none;
+}
+.pass-field.active .toggole-icon.active-icon {
+  display: none;
+}
+.pass-field.active .toggole-icon.hidden-icon {
+  display: block;
+}
+
+.dropdown .dropdown-content {
+  @apply absolute 
+        top-4
+        -left-2 
+        
+        z-50
+        shadow-lg
+        shadow-skin-muted
+        border
+        text-skin-base
+        bg-skin-light
+        rounded-md
+        invisible
+        opacity-0
+        translate-y-8
+        transition-all;
+}
+.dropdown .dropdown-content .inner-dropdown {
+  @apply relative;
+}
+.dropdown .dropdown-content .inner-dropdown .inner-dropdown-content {
+  @apply absolute
+                left-full
+                top-0
+                z-50
+                shadow-lg
+                shadow-skin-muted
+                border
+                text-skin-base
+                bg-skin-light
+                rounded-md
+                invisible
+                opacity-0
+                -translate-x-10
+                transition-all;
+}
+.dropdown .dropdown-content .inner-dropdown:hover .inner-dropdown-content {
+  @apply visible
+                    opacity-100
+                    -translate-x-2;
+}
+.dropdown:hover .dropdown-content {
+  @apply visible
+            opacity-100;
+}
+
+/* tab */
+.tab-bar::-webkit-scrollbar,
+.inner-tab-bar::-webkit-scrollbar,
+.modal-tab-bar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.tab-bar .tab-button,
+.tab-bar .inner-tab-button,
+.inner-tab-bar .tab-button,
+.inner-tab-bar .inner-tab-button,
+.modal-tab-bar .tab-button,
+.modal-tab-bar .inner-tab-button {
+  @apply flex 
+        items-center 
+        h-full 
+        text-lg 
+        font-semibold 
+        text-gray-600 
+        border-2 
+        rounded-t-lg 
+        px-4 
+        py-4 
+        border-transparent 
+        
+        whitespace-nowrap 
+        transition-all
+        hover:text-skin-base;
+}
+.tab-bar .tab-button.active-tab,
+.tab-bar .inner-tab-button.active-tab,
+.inner-tab-bar .tab-button.active-tab,
+.inner-tab-bar .inner-tab-button.active-tab,
+.modal-tab-bar .tab-button.active-tab,
+.modal-tab-bar .inner-tab-button.active-tab {
+  @apply border-skin-muted
+            border-b-transparent
+            bg-white;
+}
+
+.tab-content,
+.inner-tab-content,
+.modal-tab-content {
+  @apply hidden
+    mb-40;
+}
+.tab-content.active-content,
+.inner-tab-content.active-content,
+.modal-tab-content.active-content {
+  @apply block;
+}
+
+.collapsible-wrap {
+  @apply border 
+    border-skin-muted
+    rounded-sm;
+}
+.collapsible-wrap .collapsible {
+  @apply p-4
+        flex
+        items-center
+        justify-between
+        gap-4
+        font-medium
+        text-skin-base
+        transition-all
+        border-b
+        border-b-skin-muted;
+}
+.collapsible-wrap .collapsible svg {
+  transition: 0.2s ease-in-out;
+}
+.collapsible-wrap .collapsible:hover {
+  @apply text-skin-hover;
+}
+.collapsible-wrap .collapsible.active {
+  @apply text-skin-hover;
+}
+.collapsible-wrap .collapsible.active svg {
+  rotate: 180deg;
+}
+.collapsible-wrap .collapsible-content {
+  max-height: 0px;
+  overflow-y: hidden;
+  transition: 0.2s ease-in-out;
+  @apply border-b
+        border-b-skin-muted
+        pl-4;
+}
+
+body.modal-open {
+  @apply h-screen
+        overflow-y-hidden;
+}
+
+.modal-wrap {
+  width: 100vw;
+  height: 100vh;
+  @apply fixed
+    top-0
+    right-0
+    z-50
+    hidden;
+}
+@media (max-width: 768px) {
+  .modal-wrap {
+    @apply w-screen;
+  }
+}
+.modal-wrap .modal-content {
+  overflow-y: scroll;
+  @apply absolute
+        top-1/2
+        right-0
+        -translate-y-1/2
+        scale-0
+        w-full
+        h-[85vh]
+        bg-skin-light
+        z-50
+        invisible
+        opacity-0
+        origin-center
+        transition-all;
+}
+@media (max-width: 768px) {
+  .modal-wrap .modal-content {
+    width: 100%;
+  }
+}
+.modal-wrap .modal-closer {
+  @apply w-12 
+        h-12 
+        grid 
+        place-items-center 
+        rounded-full
+        transition-all;
+}
+@media (max-width: 768px) {
+  .modal-wrap .modal-closer {
+    @apply absolute
+            top-10
+            right-8;
+  }
+}
+.modal-wrap .modal-scrim {
+  @apply absolute
+        inset-0
+        
+        opacity-60;
+}
+.modal-wrap.active-modal {
+  @apply block;
+}
+.modal-wrap.active-modal .modal-content {
+  @apply scale-100
+            visible
+            opacity-100;
+}
+.modal-wrap.delete-confirmation {
+  background-color: rgba(var(--color-boxshadow-muted), 0.05);
+}
+
+header .main-header > .grid {
+  grid-template-columns: auto 2fr auto;
+  grid-template-areas: "logo big-logo contact" "logo nav button";
+  align-items: center;
+}
+header .main-header .logo {
+  grid-area: logo;
+  margin-bottom: 20px;
+  align-self: flex-end;
+}
+header .main-header .big-logo img {
+  margin-inline: auto;
+}
+header .main-header nav {
+  justify-self: center;
+}
+header .main-header .log-button {
+  justify-self: end;
+}
+
+.sticky-header {
+  box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.1);
+  @apply fixed
+    w-full
+    top-0
+    bg-skin-light
+    -translate-y-full
+    z-50
+    transition-all;
+}
+.sticky-header > div {
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+.sticky-header nav {
+  justify-self: center;
+  margin-right: 120px;
+}
+.sticky-header.sticky {
+  @apply translate-y-0;
+}
+
+main {
+  min-height: calc(100vh - 800px);
+}
+
+footer {
+  @apply mt-28
+    border-t
+    border-skin-muted
+    bg-white;
+}
+footer .overlay {
+  background: url("../img/footer-back.png");
+}
+footer .upper-footer {
+  margin-top: -100px;
+  grid-template-columns: 1fr 1fr 1fr auto;
+}
+footer .mid-footer {
+  margin-top: 40px;
+}
+footer .mid-footer .grid {
+  grid-template-columns: 400px 1fr 1fr 1fr;
+}
+
+body {
+  font-family: "OpenSans", sans-serif;
+  background: url("../img/bg-texture.png");
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+#home .banner .owl-carousel,
+#home .banner .owl-stage-outer,
+#home .banner .owl-stage,
+#home .banner .owl-item,
+#home .banner .item {
+  height: 100%;
+}
+#home .banner .owl-carousel .owl-dots {
+  display: none;
+}
+#home .banner .owl-carousel .item {
+  @apply relative;
+}
+#home .banner .owl-carousel .item::before {
+  content: "";
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2509803922), rgba(0, 0, 0, 0.8078431373));
+  @apply absolute
+                    inset-0;
+}
+#home .banner .owl-carousel .item.first {
+  background: url("../img/intro.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+}
+#home .banner .owl-carousel .item.second {
+  background: url("../img/1675037016C.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+#home .banner .owl-carousel .item.third {
+  background: url("../img/1675037036C.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#home .banner .content {
+  height: calc(100vh - 240px);
+}
+#home .courses .course-carousel {
+  @apply relative;
+}
+#home .courses .owl-prev {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+            h-8
+            flex 
+            items-center
+            justify-center
+            text-2xl
+            absolute
+            rounded-full
+            -translate-y-1/2
+            -left-12;
+}
+#home .courses .owl-prev span {
+  @apply pb-1;
+}
+#home .courses .owl-next {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+            h-8
+            flex 
+            items-center
+            justify-center
+            text-2xl
+            absolute
+            rounded-full
+            -translate-y-1/2
+            -right-12;
+}
+#home .courses .owl-next span {
+  @apply pb-1;
+}
+#home .testimonial .owl-item,
+#home .job-getters .owl-item {
+  padding: 20px;
+}
+#home .testimonial .owl-prev,
+#home .job-getters .owl-prev {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+            h-8
+            flex 
+            items-center
+            justify-center
+            text-2xl
+            absolute
+            rounded-full
+            -translate-y-1/2
+            -left-12;
+}
+#home .testimonial .owl-prev span,
+#home .job-getters .owl-prev span {
+  @apply pb-1;
+}
+#home .testimonial .owl-next,
+#home .job-getters .owl-next {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+            h-8
+            flex 
+            items-center
+            justify-center
+            text-2xl
+            absolute
+            rounded-full
+            -translate-y-1/2
+            -right-12;
+}
+#home .testimonial .owl-next span,
+#home .job-getters .owl-next span {
+  @apply pb-1;
+}
+#home .testimonial .card .content,
+#home .job-getters .card .content {
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.1);
+}
+#home .special-events .card img {
+  @apply relative;
+}
+#home .special-events .card img + .overlay {
+  @apply absolute
+                    inset-0
+                    bg-black
+                    bg-opacity-30;
+}
+#home .prime-minister > div {
+  background: url("../img/primeminister.png");
+  background-size: cover;
+  background-position: center;
+}
+#home .ceremony .card {
+  @apply relative
+            transition-all;
+}
+#home .ceremony .card img + .overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 60%, rgb(0, 0, 0));
+  @apply absolute
+                    inset-0
+                    transition-all;
+}
+#home .ceremony .card .content {
+  transform: translateY(75%);
+  transition: 0.15s ease-in-out;
+}
+#home .ceremony .card .content h1 {
+  margin-bottom: 60px;
+  transition: 0.15s ease-in-out;
+}
+#home .ceremony .card:hover img + .overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 40%, rgb(0, 0, 0));
+}
+#home .ceremony .card:hover .content {
+  transform: translateY(0%);
+}
+#home .ceremony .card:hover .content h1 {
+  margin-bottom: 20px;
+}
+#home .partners .grid {
+  grid-template-columns: auto 1fr;
+}
+
+#course-list .banner {
+  background: url("../img/courselist-banner.png");
+  background-size: cover;
+}
+#course-list .webdev-carousel {
+  @apply relative;
+}
+#course-list .owl-prev {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -left-12;
+}
+#course-list .owl-prev span {
+  @apply pb-1;
+}
+#course-list .owl-next {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -right-12;
+}
+#course-list .owl-next span {
+  @apply pb-1;
+}
+
+#apply-student .container > .content {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#apply-branch [data-multi-step] {
+  overflow: hidden;
+  position: relative;
+}
+#apply-branch [data-multi-step] [data-step] {
+  display: none;
+}
+#apply-branch [data-multi-step] [data-step].active-form {
+  display: block;
+}
+#apply-branch [data-multi-step] .hide-form {
+  display: none;
+}
+
+#branch-list .card.grid {
+  grid-template-columns: 1.2fr 2fr;
+  align-items: center;
+  background-color: #00ADEF;
+}
+#branch-list .card.grid .img-part {
+  @apply bg-skin-secondary
+            rounded-r-full
+            p-3;
+}
+#branch-list .card.grid .img-part img {
+  border: 2px solid var(--color-fill-primary);
+}
+#branch-list .topcourse-carousel {
+  @apply relative;
+}
+#branch-list .owl-prev {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -left-12;
+}
+#branch-list .owl-prev span {
+  @apply pb-1;
+}
+#branch-list .owl-next {
+  top: 40%;
+  line-height: 0%;
+  @apply w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -right-12;
+}
+#branch-list .owl-next span {
+  @apply pb-1;
+}
+
+#contact-us .contact-form {
+  background: url("../img/tilted-rectangle.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#contact-us .contact-form img {
+  @apply absolute;
+}
+#contact-us .contact-form img.left-img {
+  @apply top-0
+                left-20;
+}
+#contact-us .contact-form img.right-img {
+  @apply bottom-0
+                right-20;
+}
+#contact-us .location .grid {
+  grid-template-columns: 1fr 2.5fr;
+  align-items: center;
+}
+
+#exam-result .result-card {
+  background-color: rgba(0, 173, 239, 0.2);
+}
+#exam-result .branch-info .card {
+  grid-template-columns: 1.2fr 2fr;
+}
+
+#about-us .banner {
+  height: 70vh;
+  background: url("../img/aboutus-banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+}
+#about-us .banner .overlay {
+  @apply w-full
+            h-full
+            bg-slate-900
+            bg-opacity-80
+            -z-10;
+}
+#about-us .mission-vision .container > .grid {
+  grid-template-areas: "text1 img" "text2 img";
+}
+#about-us .mission-vision .container > .grid img {
+  grid-area: img;
+}
+#about-us .team .members .card {
+  @apply transition-all
+                hover:border-transparent 
+                hover:shadow-lg;
+}
+
+#gallery .banner {
+  background: url("../img/gallery-banner.png");
+  background-position: center;
+}
+#gallery #award-tab img + .overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 60%, rgb(0, 0, 0));
+  @apply absolute
+                inset-0
+                transition-all;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,77 @@
+#branch-list
+{
+    .card.grid
+    {
+        grid-template-columns: 1.2fr 2fr;
+        align-items: center;
+        background-color: #00ADEF;
+
+        .img-part
+        {
+            @apply
+            bg-skin-secondary
+            rounded-r-full
+            p-3;
+            
+            img
+            {
+                border: 2px solid var(--color-fill-primary);
+            }
+        }
+    }
+
+    .topcourse-carousel
+    {
+        @apply
+        relative;
+    }
+    .owl-prev
+    {
+        top: 40%;
+        line-height: 0%;
+        @apply
+        w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -left-12;
+
+        
+
+        span 
+        {
+            @apply
+            pb-1;
+        }
+    }
+
+    .owl-next
+    {
+        top: 40%;
+        line-height: 0%;
+        @apply
+        w-8
+        h-8
+        flex 
+        items-center
+        justify-center
+        text-2xl
+        absolute
+        rounded-full
+        -translate-y-1/2
+        -right-12;
+
+        
+
+        span 
+        {
+            @apply
+            pb-1;
+        }
+    }
+}

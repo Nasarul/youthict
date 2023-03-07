@@ -1,0 +1,15 @@
+#exam-result
+{
+    .result-card
+    {
+        background-color: rgba(0, 173, 239, 0.2);
+    }
+
+    .branch-info
+    {
+        .card 
+        {
+            grid-template-columns: 1.2fr 2fr;
+        }
+    }
+}

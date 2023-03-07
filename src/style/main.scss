@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./abstracts/all.scss";
+@import "./core/all.scss";
+@import "./components/all.scss";
+@import "./layout/all.scss";
+@import "./pages/main";
+
+@import "./pages/home";
+@import "./pages/course-list";
+@import "./pages/apply-student";
+@import "./pages/apply-branch";
+@import "./pages/branch-list";
+@import "./pages/contact-us";
+@import "./pages/exam-result";
+@import "./pages/about-us";
+
+@import "./pages/gallery";

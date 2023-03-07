@@ -1,0 +1,61 @@
+.collapsible-wrap
+{
+    @apply
+    
+    border 
+    border-skin-muted
+    rounded-sm;
+
+    .collapsible 
+    {
+        @apply
+        p-4
+        flex
+        items-center
+        justify-between
+        gap-4
+        font-medium
+        text-skin-base
+        transition-all
+        border-b
+        border-b-skin-muted;
+
+
+        svg 
+        {
+            // rotate: ;
+            transition: 0.2s ease-in-out;
+        }
+
+        &:hover 
+        {
+            @apply
+            text-skin-hover;
+        }
+
+        &.active 
+        {
+            @apply
+            text-skin-hover;
+            
+            svg 
+            {
+                rotate: 180deg;
+            }
+
+        }
+    }
+
+    .collapsible-content 
+    {
+        max-height: 0px;
+        overflow-y: hidden;
+        transition: 0.2s ease-in-out;
+        @apply
+        border-b
+        border-b-skin-muted
+        pl-4;
+        
+        
+    }
+}

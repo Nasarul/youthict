@@ -1,0 +1,24 @@
+#apply-branch
+{
+    [data-multi-step] 
+    {
+        overflow: hidden;
+        position: relative;
+
+        [data-step]
+        {
+            display: none;
+
+            &.active-form 
+            {
+                display: block;
+            }
+        }
+
+
+        .hide-form 
+        {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,179 @@
+.btn, 
+button 
+{
+    cursor: pointer;
+}
+
+// .menu-btn 
+// {
+//     * 
+//     {
+//         pointer-events: none;
+//     }
+// }
+
+.fill-button
+{
+    @apply
+    relative
+    h-[52px]
+    px-5
+    flex
+    items-center
+    justify-center
+    text-skin-base-inverted
+    text-xl
+    font-semibold
+    rounded-md
+    overflow-hidden;
+
+    background: linear-gradient(to right, #DD7131, #f4a448);
+    transition: all 0.2s ease-in-out;
+    
+
+    &::before
+    {
+        content: "";
+        @apply
+        absolute
+        top-0
+        left-0
+        w-4
+        h-16
+        rounded-md
+        bg-white
+        bg-opacity-20
+        rotate-45
+        -translate-x-5
+        -translate-y-7
+        transition-all;
+    }
+    
+    &:hover
+    {
+        &::before
+        {
+            @apply
+            top-full
+            left-full
+            -translate-x-5
+            -translate-y-8
+        }
+
+        svg 
+        {
+            path 
+            {
+                @apply
+                fill-skin-inverted;
+            }
+        }
+    }
+}
+
+.outline-button
+{
+    @apply
+    relative
+    h-[52px]
+    px-5
+    font-semibold
+    text-xl
+    rounded-md
+    overflow-hidden
+    flex
+    items-center
+    justify-center
+    text-skin-duotone
+    border
+    border-skin-base
+    transition;
+
+    &:hover
+    {
+        @apply
+        bg-skin-primary-muted
+        text-skin-base-inverted;
+
+        svg 
+        {
+            path 
+            {
+                @apply
+                fill-skin-inverted;
+            }
+        }
+    }
+}
+
+// // .outline-button
+// // {
+// //     @apply
+// //     h-14
+// //     px-4
+// //     flex
+// //     items-center
+// //     justify-center
+// //     bg-white
+// //     border 
+// //     border-gray-300
+// //     text-gray-600
+// //     font-medium
+// //     rounded-sm
+// //     transition
+// //     hover:border-blue-500
+// //     hover:text-blue-500;
+// // }
+
+// .outline-button
+// {
+//     @apply
+//     h-14
+//     px-4
+//     flex
+//     items-center
+//     justify-center
+//     bg-skin-base
+//     border 
+//     border-skin-base
+//     text-skin-hover
+//     font-medium
+//     rounded
+//     transition
+//     hover:bg-skin-button-base
+//     hover:border-skin-base
+//     hover:text-skin-base-inverted;
+// }
+
+// button 
+// {
+//     &.active-function
+//     {
+//         @apply 
+//         bg-skin-button-base;
+
+//         svg 
+//         {
+//             path 
+//             {
+//                 @apply
+//                 fill-skin-inverted;
+//             }
+//         }
+
+//         &:hover
+//         {
+//             @apply 
+//             bg-skin-button-base-hover;
+
+//             svg 
+//             {
+//                 path 
+//                 {
+//                     @apply
+//                     fill-skin-inverted;
+//                 }
+//             }
+//         }
+//     }
+// }

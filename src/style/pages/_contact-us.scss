@@ -1,0 +1,38 @@
+#contact-us
+{
+    .contact-form
+    {
+        background: url("../img/tilted-rectangle.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        img 
+        {
+            @apply
+            absolute;
+
+            &.left-img
+            {
+                @apply
+                top-0
+                left-20;
+            }
+            &.right-img
+            {
+                @apply
+                bottom-0
+                right-20;
+            }
+        }
+    }
+
+    .location
+    {
+        .grid 
+        {
+            grid-template-columns: 1fr 2.5fr;
+            align-items: center;
+        }
+    }
+}

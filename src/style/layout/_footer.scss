@@ -1,0 +1,31 @@
+main{
+    min-height: calc(100vh - 800px);
+}
+
+footer 
+{
+    
+    @apply 
+    mt-28
+    border-t
+    border-skin-muted
+    bg-white;
+
+    .overlay 
+    {
+        background: url("../img/footer-back.png");
+    }
+    .upper-footer
+    {
+        margin-top: -100px;
+        grid-template-columns: 1fr 1fr 1fr auto;
+    }
+    .mid-footer
+    {
+        margin-top: 40px;
+        .grid
+        {
+            grid-template-columns: 400px 1fr 1fr 1fr;
+        }
+    }
+}
